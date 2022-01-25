@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://code/shot.gd" type="Script" id=1]
+
+[node name="circle" type="Node2D"]
+
+[node name="shot" type="Node2D" parent="."]
+script = ExtResource( 1 )
