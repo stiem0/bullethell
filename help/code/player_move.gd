@@ -3,6 +3,11 @@ extends KinematicBody2D
 export (int) var speed = 200
 
 var velocity = Vector2()
+var health = 200
+var game_over = load ("res://scene/game_over.tscn")
+var dead = false 
+func _damage(damage):
+	health -= damage 
 
 func get_input():
 	velocity = Vector2()
@@ -20,4 +25,15 @@ func _process(delta):
 	get_input()
 	velocity = move_and_slide(velocity)
 
+func _on_Area2D_body_entered(body: Node) -> void:
 
+
+	_damage(body.get_parent().damage)
+	print(health)
+	body.get_parent().queue_free()
+	if health < 0 and dead == false : 
+		print("game over")
+		var b= game_over.instance()
+		b.position = self.position
+		add_child(b)
+		dead = true 
