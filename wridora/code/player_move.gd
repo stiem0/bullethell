@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-export (int) var speed = 200
+export (int) var speed = 150
 
 var velocity = Vector2()
 var health = 200
@@ -24,6 +24,7 @@ func get_input():
 
 func _process(delta):
 	get_input()
+
 	velocity = move_and_slide(velocity)
 
 func _on_Area2D_body_entered(body: Node) -> void:
@@ -39,3 +40,4 @@ func _on_Area2D_body_entered(body: Node) -> void:
 			b.position = self.position
 			add_child(b)
 			dead = true 
+			

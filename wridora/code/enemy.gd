@@ -20,10 +20,10 @@ func _ready():
 
 func _on_Timer_timeout():
 	var b= bullet_scene.instance()
-	b.position = self.position
+	b.position = self.get_parent().get_parent().position
 	b.rotation = self.rotation
 
-	get_parent().add_child(b)
+	get_parent().get_parent().get_parent().add_child(b)
 func _process(delta):
 	rotate(0.05)
 

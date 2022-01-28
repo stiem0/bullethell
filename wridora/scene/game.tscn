@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://scene/world.tscn" type="PackedScene" id=1]
-[ext_resource path="res://scene/circle_shot.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scene/player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scene/enemy.tscn" type="PackedScene" id=2]
 [ext_resource path="res://art/wall.jpg" type="Texture" id=3]
 
 [node name="game" type="Node2D"]
@@ -22,5 +22,5 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="circle" parent="." instance=ExtResource( 2 )]
-position = Vector2( 292.082, 161.915 )
+[node name="enemy" parent="." instance=ExtResource( 2 )]
+position = Vector2( 412, 224 )

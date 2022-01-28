@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://art/player.png" type="Texture" id=1]
+[ext_resource path="res://code/player_move.gd" type="Script" id=2]
+[ext_resource path="res://code/Player_Fire.gd" type="Script" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 10.45, 13.5536 )
+
+[sub_resource type="CapsuleShape2D" id=2]
+
+[node name="player" type="Node2D"]
+
+[node name="KinematicBody2D" type="KinematicBody2D" parent="."]
+script = ExtResource( 2 )
+
+[node name="hitbox" type="Area2D" parent="KinematicBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D/hitbox"]
+position = Vector2( 1.81607, 2.65323 )
+shape = SubResource( 1 )
+
+[node name="dull" type="CollisionShape2D" parent="KinematicBody2D"]
+shape = SubResource( 2 )
+disabled = true
+
+[node name="Sprite" type="Sprite" parent="KinematicBody2D"]
+modulate = Color( 0.862745, 0.772549, 0.772549, 1 )
+texture = ExtResource( 1 )
+
+[node name="Camera2D" type="Camera2D" parent="KinematicBody2D"]
+current = true
+
+[node name="firing" type="Node2D" parent="KinematicBody2D"]
+script = ExtResource( 3 )
+
+[connection signal="body_entered" from="KinematicBody2D/hitbox" to="KinematicBody2D" method="_on_Area2D_body_entered"]
